@@ -14,11 +14,16 @@ export default class SearchBar extends Component{
 		this.setState({term: event.target.value});
 	}
 
+	onFormSubmit(event){
+		event.preventDefault(); //don't submit the form. Enter won't work on the searchbar
+	}
+
 	render(){
+		//when you press enter on a form element, 
+		//the browser thinks you're submitting contents on a form
 		return (
-			<form className="input-group"> 
-			//when you press enter on a form element, 
-			//the browser thinks you're submitting contents on a form
+			<form onSubmit={this.onFormSubmit} className="input-group"> 
+			
 				<input 
 					placeholder="Get a five day forecast in your favorite cities"
 					className="form-control"
